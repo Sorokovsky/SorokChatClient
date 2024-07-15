@@ -2,7 +2,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { ILogo } from "./logo.interface";
 
 const Logo: FC<ILogo> = ({image, path, size}): JSX.Element => {
@@ -21,4 +21,4 @@ const Logo: FC<ILogo> = ({image, path, size}): JSX.Element => {
     );
 };
 
-export default Logo;
+export default memo(Logo);

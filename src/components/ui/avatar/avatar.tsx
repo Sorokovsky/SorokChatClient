@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FC } from "react";
+import { FC, memo } from "react";
 import { IAvatar } from "./avatar.interface";
 import styles from "./avatar.module.sass";
 
@@ -29,4 +29,4 @@ const Avatar: FC<IAvatar> = ({Icon, clickHandler, image, size}): JSX.Element => 
     );
 };
 
-export default Avatar;
+export default memo(Avatar);

@@ -1,18 +1,19 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 import { ISidebar } from "./sidebar.interface";
 import styles from "./sidebar.module.sass";
+import cn from "classnames";
 
 const Sidebar: FC<ISidebar> = ({isOpen, position = 'right'}): JSX.Element => {
+    const isOpenClass = styles.isOpen;
     return (
-        isOpen 
-        ?
         <aside
-        className={[styles.sidebar, styles[position]].join(" ")}
+        className={cn(styles.sidebar, styles[position], {
+            [isOpenClass]: isOpen
+        })}
         >
 
         </aside>
-        : <></>
     );
 };
 
-export default Sidebar;
+export default memo(Sidebar);

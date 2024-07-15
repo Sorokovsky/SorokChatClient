@@ -1,21 +1,29 @@
 'use client'
-import { FC, useCallback } from "react";
+import { FC, memo, useCallback } from "react";
 import { IHeader } from "./header.interface";
 import { FaRegUserCircle } from "react-icons/fa";
 import styles from './header.module.sass';
 import logo from "@/images/logo.svg"
 import Logo from "@/ui/logo/logo";
 import Avatar from "@/ui/avatar/avatar";
-import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/store/store";
+import { hide, show } from "@/store/slices/settings/settings";
+import { useDispatch } from "react-redux";
 
 const Header: FC<IHeader> = (): JSX.Element => {
+    const {isShow} = useAppSelector(state => state.settings);
+    const dispatch = useDispatch();
     const iconSize = 40;
-    const { push } = useRouter();
     const showSetting = useCallback(
         () => {
-            push("/user-settings");
+            if(isShow) {
+                dispatch(hide());
+            }
+            else {
+                dispatch(show());
+            }
         }, 
-        []
+        [isShow]
     );
     return (
         <header
@@ -41,4 +49,4 @@ const Header: FC<IHeader> = (): JSX.Element => {
     )
 };
 
-export default Header;
+export default memo(Header);

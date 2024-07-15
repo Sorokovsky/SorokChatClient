@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "@/styles/globals.sass";
 import MainLayout from "@/layout/main-layout";
 import { ILayout } from "@/layout/lauout.interface";
+import StoreProvider from "@/components/store-povider/store-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -9,6 +10,12 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({children}: ILayout) => {
-  return <MainLayout>{children}</MainLayout>
+  return (
+    <StoreProvider>
+      <MainLayout>
+        {children}
+      </MainLayout>
+    </StoreProvider>
+  );
 }
 export default RootLayout;
