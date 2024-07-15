@@ -4,14 +4,15 @@
     width: 300rem
     height: 100%
     background-color: #707162c0
-    transition: all .3s
     z-index: 1
 .left
     left: -100%
+    transition: left .5s ease
 .right
     right: -100%
+    transition: right .5s ease
 .isOpen
     &.right
-        left: 0
-    &.left
         right: 0
+    &.left
+        left: 0
