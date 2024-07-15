@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 const Header: FC<IHeader> = (): JSX.Element => {
     const iconSize = 40;
     const { push } = useRouter();
-    const redirectToUser = useCallback(
+    const showSetting = useCallback(
         () => {
             push("/user-settings");
         }, 
@@ -33,7 +33,7 @@ const Header: FC<IHeader> = (): JSX.Element => {
                 <Avatar 
                     Icon={FaRegUserCircle}
                     size={iconSize}
-                    clickHandler={redirectToUser}
+                    clickHandler={showSetting}
                 />
 
             </div>
