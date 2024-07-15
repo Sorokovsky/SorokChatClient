@@ -1,12 +1,8 @@
-import styles from "@/styles/index.module.sass";
+import HomePage from "@/pages/HomePage/home";
 import { NextPage } from "next";
 
-const Home: NextPage = () => {
-  return (
-    <main className={styles.main}>
-     Hello World
-    </main>
-  );
+const Home: NextPage = (): JSX.Element => {
+  return <HomePage></HomePage>;
 };
 
 export default Home;
