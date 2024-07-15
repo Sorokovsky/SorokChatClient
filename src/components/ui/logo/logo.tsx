@@ -14,7 +14,8 @@ const Logo: FC<ILogo> = ({image, path, size}): JSX.Element => {
                 src={image} 
                 width={size} 
                 height={size}
-                alt="SorokChat" 
+                alt="SorokChat"
+                priority
                 />
         </Link>
     );
