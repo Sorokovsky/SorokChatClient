@@ -1,0 +1,18 @@
+@import @/styles/base
+.link
+        display: flex
+        align-items: center
+        justify-content: left
+        background-color: #fff
+        gap: 10rem
+        text-decoration: none
+        color: inherit
+        font-size: 20rem
+        padding: 10rem
+        transition: background-color 0.5s ease
+        &:not(:last-child)
+            border-bottom: 1rem solid $sidebarBg
+        &:hover
+            background-color: #ffffffbf
+        *
+            flex: 0 0 auto
