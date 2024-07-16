@@ -9,6 +9,7 @@ import Avatar from "@/ui/avatar/avatar";
 import { useAppSelector } from "@/store/store";
 import { hide, show } from "@/store/slices/settings/settings";
 import { useDispatch } from "react-redux";
+import cn from "classnames";
 
 const Header: FC<IHeader> = (): JSX.Element => {
     const {isShow} = useAppSelector(state => state.settings);
@@ -27,10 +28,10 @@ const Header: FC<IHeader> = (): JSX.Element => {
     );
     return (
         <header
-        className={styles.header}
+        className={cn(styles.header)}
         >
             <div 
-            className={["container", styles.container].join(" ")}
+            className={cn("container", styles.container)}
             >
                 <Logo
                     path="/"
