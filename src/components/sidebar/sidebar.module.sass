@@ -1,16 +1,36 @@
+@import @/styles/base
 .sidebar
     position: fixed
     top: 64rem
-    width: 300rem
+    width: 250rem
     height: 100%
-    background-color: #707162c0
+    background-color: $sidebarBg
     z-index: 1
+    a
+        display: flex
+        align-items: center
+        justify-content: left
+        background-color: #fff
+        gap: 10rem
+        text-decoration: none
+        color: inherit
+        font-size: 20rem
+        padding: 10rem
+        transition: background-color 0.5s ease
+        &:not(:last-child)
+            border-bottom: 1rem solid $sidebarBg
+        &:hover
+            background-color: #ffffffbf
+        *
+            flex: 0 0 auto
 .left
     left: -100%
     transition: left .5s linear
+    border-right: 1rem solid $sidebarBg
 .right
     right: -100%
     transition: right .5s linear
+    border-left: 1rem solid $sidebarBg
 .isOpen
     &.right
         right: 0

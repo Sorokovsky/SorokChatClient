@@ -15,9 +15,18 @@ export const settingsSlice = createSlice({
         
         hide(state) {
             state.isShow = false;
+        },
+
+        toggle(state) {
+            if(state.isShow) {
+                state.isShow = false;
+            }
+            else {
+                state.isShow = true;
+            }
         }
     }
 });
 
-export const { hide, show } = settingsSlice.actions;
+export const actions = settingsSlice.actions;
 export default settingsSlice.reducer;

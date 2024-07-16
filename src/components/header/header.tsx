@@ -7,22 +7,16 @@ import logo from "@/images/logo.svg"
 import Logo from "@/ui/logo/logo";
 import Avatar from "@/ui/avatar/avatar";
 import { useAppSelector } from "@/store/store";
-import { hide, show } from "@/store/slices/settings/settings";
-import { useDispatch } from "react-redux";
 import cn from "classnames";
+import { useActions } from "@/hooks/useActions";
 
 const Header: FC<IHeader> = (): JSX.Element => {
     const {isShow} = useAppSelector(state => state.settings);
-    const dispatch = useDispatch();
+    const { toggle } = useActions();
     const iconSize = 40;
     const showSetting = useCallback(
         () => {
-            if(isShow) {
-                dispatch(hide());
-            }
-            else {
-                dispatch(show());
-            }
+            toggle();
         }, 
         [isShow]
     );
