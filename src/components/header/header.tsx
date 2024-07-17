@@ -13,7 +13,7 @@ import { useActions } from "@/hooks/useActions";
 const Header: FC<IHeader> = (): JSX.Element => {
     const {isShow} = useAppSelector(state => state.settings);
     const { toggle } = useActions();
-    const iconSize = 45;
+    const iconSize = 40;
     const showSetting = useCallback(
         () => {
             toggle();
