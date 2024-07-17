@@ -12,7 +12,7 @@ const HomePage: NextPage = (): JSX.Element => {
     );
     return (
         <>
-            <section>
+            <section className={cn(styles.page)}>
                 <div className={cn(styles.container)}>
                     <div className={cn(styles.left)}>
                         <Search 
