@@ -3,9 +3,11 @@ import styles from './index.module.sass';
 
 const HomePage: NextPage = (): JSX.Element => {
     return (
-        <div>
-            Hello home page
-        </div>
+        <>
+            <section>
+                <div>Hello Page</div>
+            </section>
+        </>
     )
 };
 
