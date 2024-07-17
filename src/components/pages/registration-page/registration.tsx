@@ -15,7 +15,7 @@ const RegistrationPage: NextPage = (): JSX.Element => {
             <div>
                 <Form onSubmit={() => {}} title="Реєстрація" >
                     <Input id="email" type="email" placeholder="Email" Icon={MdOutlineMail} />
-                    <Input id="password" type='password' placeholder="Password" Icon={RiLockPasswordFill} />
+                    <Input id="password" type='password' placeholder="Пароль" Icon={RiLockPasswordFill} />
                     <Button>Зареєструватися</Button>
                 </Form>
             </div>
