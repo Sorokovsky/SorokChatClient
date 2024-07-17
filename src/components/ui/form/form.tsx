@@ -1,10 +1,10 @@
 import { FC, memo } from "react";
 import { IForm } from "./form.interface";
 
-const Form: FC<IForm> = (): JSX.Element => {
+const Form: FC<IForm> = ({children}): JSX.Element => {
     return (
         <form>
-            
+            {children}
         </form>
     );
 };
