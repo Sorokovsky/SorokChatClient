@@ -6,4 +6,5 @@ export interface IInput {
     placeholder?: string;
     className?: string;
     Icon?: IconType;
+    id: string;
 };
