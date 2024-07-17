@@ -3,7 +3,7 @@ import { CiUser, CiLogin } from "react-icons/ci";
 
 export const userSettings: IUserSetting[] = [
     {
-        path: "/register",
+        path: "/registration",
         Icon: CiUser,
         title: "Реєстрація",
     },
