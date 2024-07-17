@@ -10,7 +10,7 @@ import { useAppSelector } from "@/store/store";
 import cn from "classnames";
 import { useActions } from "@/hooks/useActions";
 
-const Header: FC<IHeader> = (): JSX.Element => {
+const Header: FC<IHeader> = ({className}): JSX.Element => {
     const {isShow} = useAppSelector(state => state.settings);
     const { toggle } = useActions();
     const iconSize = 40;
@@ -22,7 +22,7 @@ const Header: FC<IHeader> = (): JSX.Element => {
     );
     return (
         <header
-        className={cn(styles.header)}
+        className={cn(styles.header, className)}
         >
             <div 
             className={cn("container", styles.container)}
