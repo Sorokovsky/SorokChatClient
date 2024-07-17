@@ -3,16 +3,20 @@ import { NextPage } from "next";
 import styles from './index.module.sass';
 import Search from "@/ui/search/search"
 import cn from "classnames";
+import { ChangeEvent, useCallback } from "react";
 
 const HomePage: NextPage = (): JSX.Element => {
+    const searchHandler = useCallback((ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        }, 
+        []
+    );
     return (
         <>
             <section>
                 <div className={cn(styles.container)}>
                     <div className={cn(styles.left)}>
                         <Search 
-                        searchHandler={ev => {console.log(ev.target.value);}
-                        }
+                        searchHandler={searchHandler}
                         placeholder={"Search"} 
                         />
                     </div>
