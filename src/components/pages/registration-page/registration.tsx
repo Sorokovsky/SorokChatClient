@@ -13,8 +13,8 @@ const RegistrationPage: NextPage = (): JSX.Element => {
         <section className={cn(styles.page)}>
             <div>
                 <Form onSubmit={() => {}} title="Реєстрація" >
-                    <Input placeholder="Email" Icon={MdOutlineMail} />
-                    <Input placeholder="Password" Icon={RiLockPasswordFill} />
+                    <Input type="email" placeholder="Email" Icon={MdOutlineMail} />
+                    <Input type='password' placeholder="Password" Icon={RiLockPasswordFill} />
                 </Form>
             </div>
         </section>
