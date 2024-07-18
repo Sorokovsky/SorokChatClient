@@ -1,16 +1,20 @@
-import { FC, memo, MouseEvent, MouseEventHandler, useEffect, useRef } from "react";
+import { FC, memo, useEffect, useRef } from "react";
 import { ISidebar } from "./sidebar.interface";
 import styles from "./sidebar.module.sass";
 import cn from "classnames";
-import { userSettings } from "@/consts/user-settings/user-settings";
-import SettingsList from "@/components/settings-list/settings-list";
-const Sidebar: FC<ISidebar> = ({isOpen, position = 'right', close}): JSX.Element => {
+const Sidebar: FC<ISidebar> = ({isOpen, position = 'right', close, children}): JSX.Element => {
     const isOpenClass = styles.isOpen;
     const body = useRef<HTMLElement>();
-    const clickHandler = (ev: globalThis.MouseEvent) => {
-        ev.stopPropagation();
-        
-        
+    const clickHandler = (ev: globalThis.MouseEvent) => {       
+        let target = ev.target as HTMLElement;
+        if(!target.closest(`.${styles.sidebar}`) && !target.closest(`button`)) {
+            console.log(target);
+            
+            close();
+        }
+        if(target.closest(`.${styles.sidebar} a`)) {
+            close();
+        }
     }
 
     useEffect(() => {
@@ -27,7 +31,7 @@ const Sidebar: FC<ISidebar> = ({isOpen, position = 'right', close}): JSX.Element
             [isOpenClass]: isOpen
         })}
         >
-            <SettingsList settings={userSettings} />
+            {children}
         </aside>
     );
 };

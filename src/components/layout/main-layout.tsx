@@ -8,6 +8,8 @@ import favicon from "@/images/favicon.ico";
 import styles from "./layout.module.sass";
 import cn from "classnames";
 import { useActions } from "@/hooks/useActions";
+import { userSettings } from "@/constants/user-settings/user-settings";
+import SettingsList from "@/components/settings-list/settings-list";
 
 const MainLayout: FC<ILayout> = ({children}): JSX.Element => {
     const { isShow } = useAppSelector(state => state.settings);
@@ -19,7 +21,9 @@ const MainLayout: FC<ILayout> = ({children}): JSX.Element => {
             <Header className={cn(styles.header)} />
             <main className={cn(styles.main)}>
                 {children}
-                <Sidebar close={hide} isOpen={isShow} />
+                <Sidebar close={hide} isOpen={isShow} >
+                <SettingsList settings={userSettings} />
+                </Sidebar>
             </main>
         </body>
     </html>
