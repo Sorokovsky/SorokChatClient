@@ -13,7 +13,6 @@ import { useForm, FieldValues } from "react-hook-form";
 const RegistrationPage: NextPage = (): JSX.Element => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data: FieldValues) => {
-        console.log(data);
         
     }
     return (
