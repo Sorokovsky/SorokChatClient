@@ -7,9 +7,9 @@ const Sidebar: FC<ISidebar> = ({isOpen, position = 'right', close, children}): J
     const body = useRef<HTMLElement>();
     const clickHandler = (ev: globalThis.MouseEvent) => {       
         let target = ev.target as HTMLElement;
-        if((!target.closest(`.${styles.sidebar}`) && !target.closest(`button`) || target.closest(`.${styles.sidebar} a`))) {
-            console.log(target);
-            
+        const isNotInSidebar: boolean = (!target.closest(`.${styles.sidebar}`) && !target.closest(`button`));
+        const isLinkInSidebar: boolean = target.closest(`.${styles.sidebar} a`) !== null;
+        if(isNotInSidebar || isLinkInSidebar) {            
             close();
         }
     }
