@@ -19,7 +19,7 @@ const LoginPage: NextPage = (): JSX.Element => {
                     <Button>Авторизуватися</Button>
                 </Form>
             </div>
-        </section>
+        </ section>
     );
 };
 
