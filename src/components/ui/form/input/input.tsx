@@ -4,7 +4,8 @@ import { IInput } from "./input.interface";
 import cn from "classnames";
 import styles from "./input.module.sass";
 
-const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(({type = 'text', className = "", placeholder = "", Icon, id}, ref): JSX.Element => {    
+const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
+    ({type = 'text', className = "", placeholder = "", Icon, id, ...rest}, ref): JSX.Element => {    
     const [isFocused, setIsFocused] = useState(false)
     return (
         <label
@@ -19,6 +20,7 @@ const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(({type = 'text', 
                 id={id}
                 className={cn(styles.input, className)}
                 placeholder={placeholder}
+                {...rest}
                 onFocus={() => {
                     setIsFocused(true);
                 }}

@@ -26,7 +26,7 @@ const RegistrationPage: NextPage = (): JSX.Element => {
                     placeholder="Email" 
                     Icon={MdOutlineMail} 
                     {...register("email", {
-                        required: true
+                        required: true,
                     })}
                     />
                     <Input 
