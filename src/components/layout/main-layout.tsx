@@ -7,9 +7,11 @@ import { useAppSelector } from "@/store/store";
 import favicon from "@/images/favicon.ico";
 import styles from "./layout.module.sass";
 import cn from "classnames";
+import { useActions } from "@/hooks/useActions";
 
 const MainLayout: FC<ILayout> = ({children}): JSX.Element => {
     const { isShow } = useAppSelector(state => state.settings);
+    const { hide } = useActions();
     return (
     <html lang="uk">
         <link rel="icon" type="image/x-icon" href={favicon.src}></link>
@@ -17,7 +19,7 @@ const MainLayout: FC<ILayout> = ({children}): JSX.Element => {
             <Header className={cn(styles.header)} />
             <main className={cn(styles.main)}>
                 {children}
-                <Sidebar isOpen={isShow} />
+                <Sidebar close={hide} isOpen={isShow} />
             </main>
         </body>
     </html>
