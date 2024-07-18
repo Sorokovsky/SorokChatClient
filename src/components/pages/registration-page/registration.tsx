@@ -15,6 +15,7 @@ const RegistrationPage: NextPage = (): JSX.Element => {
     const onSubmit = (data: FieldValues) => {
         
     }
+    
     return (
         <section className={cn(styles.page)}>
             <div>
