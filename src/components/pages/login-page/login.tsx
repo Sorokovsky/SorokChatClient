@@ -16,7 +16,7 @@ const LoginPage: NextPage = (): JSX.Element => {
                 <Form onSubmit={() => {}} title="Авторизація" >
                     <Input id="email" type="email" placeholder="Email" Icon={MdOutlineMail} />
                     <Input id="password" type='password' placeholder="Пароль" Icon={RiLockPasswordLine} />
-                    <Button>Авторизуватися</Button>
+                    <Button type="submit">Авторизуватися</Button>
                 </Form>
             </div>
         </ section>
