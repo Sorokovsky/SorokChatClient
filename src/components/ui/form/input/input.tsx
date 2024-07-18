@@ -1,10 +1,10 @@
 'use client'
-import { FC, memo, useRef, useState } from "react";
+import { FC, forwardRef, memo, useRef, useState } from "react";
 import { IInput } from "./input.interface";
 import cn from "classnames";
 import styles from "./input.module.sass";
 
-const Input: FC<IInput> = ({type = 'text', className = "", placeholder = "", Icon, id}): JSX.Element => {    
+const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(({type = 'text', className = "", placeholder = "", Icon, id}, ref): JSX.Element => {    
     const [isFocused, setIsFocused] = useState(false)
     return (
         <label
@@ -14,6 +14,7 @@ const Input: FC<IInput> = ({type = 'text', className = "", placeholder = "", Ico
         htmlFor={id}>
             {Icon && <Icon />}
             <input
+                ref={ref}
                 type={type}
                 id={id}
                 className={cn(styles.input, className)}
@@ -27,6 +28,6 @@ const Input: FC<IInput> = ({type = 'text', className = "", placeholder = "", Ico
             />
         </label>
     );
-};
+});
 
 export default memo(Input);

@@ -1,7 +1,7 @@
-import { HTMLInputTypeAttribute } from "react";
+import { HTMLInputTypeAttribute, InputHTMLAttributes } from "react";
 import { IconType } from "react-icons";
 
-export interface IInput {
+export interface IInput extends InputHTMLAttributes<HTMLInputElement> {
     type?: HTMLInputTypeAttribute;
     placeholder?: string;
     className?: string;
