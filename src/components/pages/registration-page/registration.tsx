@@ -9,11 +9,15 @@ import { MdOutlineMail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
 import Button from "@/ui/form/button/button";
 import { useForm, FieldValues } from "react-hook-form";
+import { TRegistrationDto } from "@/types/registration.type";
+import { useActions } from "@/hooks/useActions";
 
 const RegistrationPage: NextPage = (): JSX.Element => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { registerUser } = useActions();
     const onSubmit = (data: FieldValues) => {
-        
+        const dataSend: TRegistrationDto = data as TRegistrationDto;
+        registerUser(dataSend);
     }
     
     return (

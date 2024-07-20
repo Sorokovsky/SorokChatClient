@@ -3,11 +3,12 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import * as asyncActions from "./async-actions";
 import { IUser } from "./user.interface";
 
-const { getUserProfile } = asyncActions;
+const { getUserProfile, registerUser } = asyncActions;
 
 const initialState: IUser = {
     user: null,
-    accessToken: null
+    accessToken: null,
+    error: null,
 };
 
 
@@ -33,8 +34,16 @@ const userSlice = createSlice({
         });
 
         buider.addCase(getUserProfile.rejected, (state, action) => {
-            console.log('error');
-            
+            state.error = action.error.message!;
+                        
+        });
+
+        buider.addCase(registerUser.fulfilled, (state, action) => {
+            state.user = action.payload
+        });
+
+        buider.addCase(registerUser.rejected, (state, action) => {
+            state.error = action.error.message!;
         });
     }
 });
