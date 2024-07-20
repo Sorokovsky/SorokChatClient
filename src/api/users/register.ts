@@ -1,4 +1,3 @@
-import { HttpStatusCode } from "axios";
 import { getInstanse } from "../instance";
 import { TRegistrationDto } from "@/types/registration.type"; 
 import { TUser } from "@/types/user.type";
