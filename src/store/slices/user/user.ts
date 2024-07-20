@@ -31,10 +31,12 @@ const userSlice = createSlice({
         });
 
         buider.addCase(getUserProfile.rejected, (state, action) => {
-            alert("error");
+            console.log('error');
+            
         });
     }
 });
 
 export const userActions = {...userSlice.actions};
+export const useAsyncActions = {getUserProfile};
 export default userSlice.reducer;

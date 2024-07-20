@@ -13,8 +13,9 @@ import SettingsList from "@/components/settings-list/settings-list";
 
 const MainLayout: FC<ILayout> = ({children}): JSX.Element => {
     const { isShow } = useAppSelector(state => state.settings);
-    const { hide } = useActions();
+    const { hide, getUserProfile } = useActions();
     useEffect(() => {
+        getUserProfile();
     }, []);
     return (
     <html lang="uk">
