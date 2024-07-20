@@ -13,13 +13,13 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         getAccessToken(state) {
-            let token = localStorage.getItem("accessToken");
+            let token = localStorage.getItem("access_token");
             if(token) state.accessToken = token;
             else state.accessToken = null;
         },
 
         setAccessToken(state, action: PayloadAction<string>) {
-            localStorage.setItem('accessToken', action.payload);
+            localStorage.setItem('access_token', action.payload);
             state.accessToken = action.payload;
         }
     },
