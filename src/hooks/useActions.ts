@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 
 export const useActions = () => {
     const actions = {...settingsActions, ...userActions};
-    const dispatch = useDispath();
+    const dispatch = useDispatch();
     return {
         ...bindActionCreators(actions, dispatch)
     }; 
