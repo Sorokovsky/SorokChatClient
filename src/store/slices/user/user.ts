@@ -1,4 +1,6 @@
+import { TUser } from "@/types/user.type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { getUserProfile } from "./async-actions";
 import { IUser } from "./user.interface";
 
 const initialState: IUser = {
@@ -21,12 +23,18 @@ const userSlice = createSlice({
         setAccessToken(state, action: PayloadAction<string>) {
             localStorage.setItem('access_token', action.payload);
             state.accessToken = action.payload;
-        }
+        },
     },
     extraReducers: buider => {
+        buider.addCase(getUserProfile.fulfilled, (state, action: PayloadAction<TUser>) => {
+            state.user = action.payload;
+        });
 
+        buider.addCase(getUserProfile.rejected, (state, action) => {
+            alert("error");
+        });
     }
 });
 
-export const userActions = userSlice.actions;
+export const userActions = {...userSlice.actions, getUserProfile};
 export default userSlice.reducer;

@@ -1,5 +1,5 @@
 'use client'
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 import { ILayout } from "./lauout.interface";
 import Header from "@/components/header/header";
 import Sidebar from "../sidebar/sidebar";
@@ -13,7 +13,10 @@ import SettingsList from "@/components/settings-list/settings-list";
 
 const MainLayout: FC<ILayout> = ({children}): JSX.Element => {
     const { isShow } = useAppSelector(state => state.settings);
-    const { hide } = useActions();
+    const { hide, getUserProfile} = useActions();
+    useEffect(() => {
+        getUserProfile();
+    }, []);
     return (
     <html lang="uk">
         <link rel="icon" type="image/x-icon" href={favicon.src}></link>
