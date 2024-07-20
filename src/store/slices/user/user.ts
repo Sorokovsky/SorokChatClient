@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IUser } from "./user.interface";
 
 const initialState: IUser = {
@@ -18,7 +18,7 @@ const userSlice = createSlice({
             else state.accessToken = null;
         },
 
-        setAccessToken(state, action) {
+        setAccessToken(state, action: PayloadAction<string>) {
             localStorage.setItem('accessToken', action.payload);
             state.accessToken = action.payload;
         }
