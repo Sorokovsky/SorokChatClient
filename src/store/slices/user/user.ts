@@ -1,7 +1,9 @@
 import { TUser } from "@/types/user.type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getUserProfile } from "./async-actions";
+import * as asyncActions from "./async-actions";
 import { IUser } from "./user.interface";
+
+const { getUserProfile } = asyncActions;
 
 const initialState: IUser = {
     user: null,
@@ -37,6 +39,5 @@ const userSlice = createSlice({
     }
 });
 
-export const userActions = {...userSlice.actions};
-export const useAsyncActions = {getUserProfile};
+export const userActions = {...userSlice.actions, ...asyncActions};
 export default userSlice.reducer;

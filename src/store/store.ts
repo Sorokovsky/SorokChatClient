@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 import * as userAsyncActions from './slices/user/async-actions';
-import settingsReducer from './slices/settings/settings';
-import userReducer from './slices/user/user';
+import settingsReducer, { settingsActions } from './slices/settings/settings';
+import userReducer, { userActions } from './slices/user/user';
 export const store = configureStore({
     reducer: {
         settings: settingsReducer,
@@ -18,4 +18,4 @@ export const useAppDispatch = useDispatch.withTypes<AppDispach>();
 
 export const useAppSelector = useSelector.withTypes<RootState>();
 
-export const asyncActions = {...userAsyncActions};
+export const actions = {...settingsActions, ...userActions};
