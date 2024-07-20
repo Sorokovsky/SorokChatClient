@@ -1,17 +1,19 @@
-import axios from "axios";
+import axios, { Axios, AxiosHeaders } from "axios";
 
 export const getInstanse = () => {
     const instanse = axios.create({
     baseURL: process.env.API,
-    headers: {"Authorization": `Bearer ${localStorage.getItem("access_token") || ""}`}
+    headers: {"Authorization": `Bearer ${localStorage.getItem("access_token") || ""}`},
+    withCredentials: true
     });
     instanse.interceptors.response.use(function (response) {
-        const auth = response.headers["Authorization"];
-        console.log('auth');
+        const header: AxiosHeaders = response.headers as AxiosHeaders;
+        const auth = header["authorization"];        
         if(auth) {
             
             let parts = auth.split(" ");
-            if(parts.length === 2) {
+            
+            if(parts.length === 2) {                
                 saveAccessToken(auth[1]);
             }
         }
