@@ -8,7 +8,6 @@ export const useActions = () => {
     const actions = {...settingsActions, ...userActions};
     const dispatch = useDispatch();
     return {
-        ...bindActionCreators(actions, dispatch),
-        ...bindActionCreators({getUserProfile}, dispatch)
+        ...bindActionCreators(actions, dispatch)
     }; 
 };
