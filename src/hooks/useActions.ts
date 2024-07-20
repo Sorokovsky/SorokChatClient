@@ -1,9 +1,10 @@
 import { useDispatch } from "react-redux"
-import { actions as settingActions } from "@/store/slices/settings/settings";
+import { settingsActions } from "@/store/slices/settings/settings";
 import { bindActionCreators } from "@reduxjs/toolkit";
+import { userActions } from "@/store/slices/user/user";
 
 export const useActions = () => {
-    const actions = {...settingActions}
+    const actions = {...settingsActions, ...userActions};
     const dispatch = useDispatch();
     return bindActionCreators(actions, dispatch); 
-}
+};
