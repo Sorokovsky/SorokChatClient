@@ -3,11 +3,14 @@ import { bindActionCreators } from "@reduxjs/toolkit";
 import { userActions } from "@/store/slices/user/user";
 import { getUserProfile } from "@/store/slices/user/async-actions";
 import { useDispatch } from "react-redux";
+import { useAppDispatch } from "@/store/store";
 
 export const useActions = () => {
     const actions = {...settingsActions, ...userActions};
     const dispatch = useDispatch();
+    const appDispatch = useAppDispatch();
     return {
-        ...bindActionCreators(actions, dispatch)
+        ...bindActionCreators(actions, dispatch),
+        ...bindActionCreators({getUserProfile}, dispatch)
     }; 
 };
