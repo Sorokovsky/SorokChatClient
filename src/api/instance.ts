@@ -14,7 +14,7 @@ export const getInstanse = () => {
             let parts = auth.split(" ");
             
             if(parts.length === 2) {                
-                saveAccessToken(auth[1]);
+                saveAccessToken(parts[1]);
             }
         }
         return response;
