@@ -1,5 +1,5 @@
 'use client'
-import { FC, memo, useCallback } from "react";
+import { FC, memo, useCallback, useEffect, useState } from "react";
 import { IHeader } from "./header.interface";
 import { FaRegUserCircle } from "react-icons/fa";
 import styles from './header.module.sass';
@@ -11,7 +11,9 @@ import cn from "classnames";
 import { useActions } from "@/hooks/useActions";
 
 const Header: FC<IHeader> = ({className}): JSX.Element => {
-    const {isShow} = useAppSelector(state => state.settings);
+    const [avatarPath, setAvatarPath ] = useState<string | undefined>(undefined);
+    const { isShow } = useAppSelector(state => state.settings)
+    const { user } = useAppSelector(state => state.user);
     const { toggle } = useActions();
     const iconSize = 40;
     const showSetting = useCallback(
@@ -20,6 +22,11 @@ const Header: FC<IHeader> = ({className}): JSX.Element => {
         }, 
         [isShow]
     );
+    useEffect(() => {
+        if(user === null) setAvatarPath(undefined);
+        else if(user.avatarPath.trim() === '') setAvatarPath(undefined);
+        else setAvatarPath(user.avatarPath);
+    }, [user]);
     return (
         <header
         className={cn(styles.header, className)}
@@ -36,6 +43,7 @@ const Header: FC<IHeader> = ({className}): JSX.Element => {
                 <Avatar 
                     Icon={FaRegUserCircle}
                     size={iconSize}
+                    image={avatarPath}
                     clickHandler={showSetting}
                 />
 

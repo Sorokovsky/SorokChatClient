@@ -8,8 +8,6 @@ const SettingsList: FC<ISettingsList> = ({settings}): JSX.Element => {
   let isAuth = user !== null;
   useEffect(() => {
     isAuth = user !== null;
-    console.log(user);
-    
   }, 
   [user]);
   return (
