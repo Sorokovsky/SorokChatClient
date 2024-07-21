@@ -11,10 +11,12 @@ import Button from "@/ui/form/button/button";
 import { useForm, FieldValues } from "react-hook-form";
 import { TRegistrationDto } from "@/types/registration.type";
 import { useActions } from "@/hooks/useActions";
+import { useAppSelector } from "@/store/store";
 
 const RegistrationPage: NextPage = (): JSX.Element => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { registerUser } = useActions();
+    const { error, isLoading } = useAppSelector(state => state.user);
     const onSubmit = (data: FieldValues) => {
         const dataSend: TRegistrationDto = data as TRegistrationDto;
         registerUser(dataSend);
@@ -42,7 +44,7 @@ const RegistrationPage: NextPage = (): JSX.Element => {
                         required: true,
                     })}
                     />
-                    <Button type="submit">Зареєструватися</Button>
+                    <Button disabled={isLoading} type="submit">Зареєструватися</Button>
                 </Form>
             </div>
         </section>

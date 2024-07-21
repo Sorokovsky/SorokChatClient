@@ -11,10 +11,12 @@ import Button from "@/ui/form/button/button";
 import { FieldValues, useForm } from "react-hook-form";
 import { TLoginDto } from "@/types/login.type";
 import { useActions } from "@/hooks/useActions";
+import { useAppSelector } from "@/store/store";
 
 const LoginPage: NextPage = (): JSX.Element => {
     const { register, handleSubmit } = useForm();
     const { loginUser } = useActions();
+    const { isLoading, error } = useAppSelector(state => state.user);
     const onSubmit = (data: FieldValues) => {
         const loginDto: TLoginDto = data as TLoginDto;
         loginUser(loginDto);
@@ -36,7 +38,7 @@ const LoginPage: NextPage = (): JSX.Element => {
                     Icon={RiLockPasswordLine} 
                     {...register('password', {required: true})}
                     />
-                    <Button type="submit">Авторизуватися</Button>
+                    <Button disabled={isLoading} type="submit">Авторизуватися</Button>
                 </Form>
             </div>
         </ section>
