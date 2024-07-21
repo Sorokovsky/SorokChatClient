@@ -16,6 +16,12 @@ export const getInstanse = () => {
             if(parts.length === 2) {                
                 saveAccessToken(parts[1]);
             }
+            else {
+                saveAccessToken("");
+            }
+        }
+        else {
+            saveAccessToken("");
         }
         return response;
     }, function (error) {

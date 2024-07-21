@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import * as asyncActions from "./async-actions";
 import { IUser } from "./user.interface";
 
-const { getUserProfile, registerUser, loginUser } = asyncActions;
+const { getUserProfile, registerUser, loginUser, logoutUser } = asyncActions;
 
 const initialState: IUser = {
     user: null,
@@ -58,6 +58,20 @@ const userSlice = createSlice({
         });
 
         buider.addCase(loginUser.rejected, (state, action) => {
+            state.error = action.error.message!;
+            state.isLoading = false;
+        });
+
+        buider.addCase(logoutUser.fulfilled, (state, action) => {
+            state.user = null;
+            state.isLoading = false;
+        });
+
+        buider.addCase(logoutUser.pending, (state, action) => {
+            state.isLoading = true;
+        });
+
+        buider.addCase(logoutUser.rejected, (state, action) => {
             state.error = action.error.message!;
             state.isLoading = false;
         });

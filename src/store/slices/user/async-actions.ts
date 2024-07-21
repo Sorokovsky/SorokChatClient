@@ -1,5 +1,6 @@
 import { getProfileApi } from "@/api/users/get-profile";
 import { loginUserApi } from "@/api/users/login";
+import { logoutApi } from "@/api/users/logout";
 import { registerUserApi } from "@/api/users/register";
 import { TLoginDto } from "@/types/login.type";
 import { TRegistrationDto } from "@/types/registration.type";
@@ -25,3 +26,10 @@ export const loginUser = createAsyncThunk(
         return await loginUserApi(loginDto);
     }
 );
+
+export const logoutUser = createAsyncThunk(
+    "user/logout",
+    async () => {
+        return await logoutApi();
+    }
+)
