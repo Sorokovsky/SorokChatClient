@@ -12,14 +12,17 @@ import { useForm, FieldValues } from "react-hook-form";
 import { TRegistrationDto } from "@/types/registration.type";
 import { useActions } from "@/hooks/useActions";
 import { useAppSelector } from "@/store/store";
+import { useRouter } from "next/navigation";
 
 const RegistrationPage: NextPage = (): JSX.Element => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { registerUser } = useActions();
     const { error, isLoading } = useAppSelector(state => state.user);
+    const { push } = useRouter();
     const onSubmit = (data: FieldValues) => {
         const dataSend: TRegistrationDto = data as TRegistrationDto;
         registerUser(dataSend);
+        push('/');
     }
     
     return (

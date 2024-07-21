@@ -12,14 +12,17 @@ import { FieldValues, useForm } from "react-hook-form";
 import { TLoginDto } from "@/types/login.type";
 import { useActions } from "@/hooks/useActions";
 import { useAppSelector } from "@/store/store";
+import { useRouter } from "next/navigation";
 
 const LoginPage: NextPage = (): JSX.Element => {
     const { register, handleSubmit } = useForm();
     const { loginUser } = useActions();
+    const { push } = useRouter();
     const { isLoading, error } = useAppSelector(state => state.user);
     const onSubmit = (data: FieldValues) => {
         const loginDto: TLoginDto = data as TLoginDto;
         loginUser(loginDto);
+        push('/');
     }
     return (
         <section className={cn(styles.page)}>
