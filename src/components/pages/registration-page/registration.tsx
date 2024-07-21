@@ -14,7 +14,7 @@ import { useActions } from "@/hooks/useActions";
 import { useAppSelector } from "@/store/store";
 
 const RegistrationPage: NextPage = (): JSX.Element => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const { registerUser } = useActions();
     const { error, isLoading } = useAppSelector(state => state.user);
     const onSubmit = (data: FieldValues) => {
