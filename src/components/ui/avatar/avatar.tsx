@@ -5,8 +5,6 @@ import styles from "./avatar.module.sass";
 import cn from "classnames";
 
 const Avatar: FC<IAvatar> = ({Icon, clickHandler, image, size}): JSX.Element => {
-    console.log('avatar', image);
-    
     return (
         <button
             className={cn(styles.avatar)}

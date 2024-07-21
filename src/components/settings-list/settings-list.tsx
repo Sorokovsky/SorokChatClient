@@ -14,7 +14,7 @@ const SettingsList: FC<ISettingsList> = ({settings}): JSX.Element => {
     <>
     {
     [...settings
-    .filter(item => item.isPublic === isAuth)]
+    .filter(item => item.isPublic !== isAuth)]
     .map(
       item => <SettingItem key={item.path} item={item} />
       )

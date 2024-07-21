@@ -6,7 +6,7 @@ import styles from "./input.module.sass";
 
 const Input: FC<IInput> = forwardRef<HTMLInputElement, IInput>(
     ({type = 'text', className = "", placeholder = "", Icon, id, ...rest}, ref): JSX.Element => {    
-    const [isFocused, setIsFocused] = useState(false)
+    const [isFocused, setIsFocused] = useState(false);
     return (
         <label
         className={cn(styles.label, {
