@@ -8,6 +8,7 @@ import FileInput from "@/ui/form/file-input/file-input";
 import Button from "@/ui/form/button/button";
 import { FieldValues, useForm } from "react-hook-form";
 import { useDate } from "@/hooks/useDate";
+import { TUpdateUser } from "@/types/update-user.type";
 
 const UserPage: NextPage = (): JSX.Element => {
   const { user } = useAppSelector(state => state.user);
@@ -16,11 +17,15 @@ const UserPage: NextPage = (): JSX.Element => {
   const [createdAt, setCreatedAt] = useState("");
   const [updatedAt, setUpdatedAt] = useState("");
   const onSubmit = (data: FieldValues) => {
-    let keys = Object.keys(data);
-    keys = keys.filter(key => data[key]);
-    console.log(keys);
-    data = {...keys.map(key => [key] = data[key])};
-    console.log(data);
+    let keys: (keyof TUpdateUser)[] = Object.keys(data) as (keyof TUpdateUser)[];
+    let update: TUpdateUser = {};
+    keys.map(key => update[key] = data[key]);
+    keys.forEach((key) => {
+      if (update[key] == undefined || update[key] == null || update[key] == '') {
+        delete update[key];
+      }
+    });
+    if (update.avatar?.length === 0) delete update.avatar;    
     const wantSave = confirm("Хочете зберегти данні?");
     if(!wantSave) return;
     
