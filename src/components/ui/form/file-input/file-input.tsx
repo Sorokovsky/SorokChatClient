@@ -18,7 +18,6 @@ const FileInput: FC<IFileInput> = forwardRef<HTMLInputElement, IFileInput>(
                         const target = ev.target || window.event?.srcElement;
                         const file = target.files![0];
                         setFile(file);
-                        
                     }}
                     {...rest}
                 />
