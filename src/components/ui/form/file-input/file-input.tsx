@@ -18,9 +18,6 @@ const FileInput: FC<IFileInput> = forwardRef<HTMLInputElement, IFileInput>(
                         const reader = new FileReader();
                         reader.onload = () => {
                             setSrc(reader.result?.toString() || image);
-                            console.log(src);
-                            
-                            
                         };
                         reader.readAsDataURL(ev.target.files![0])
                     }}
