@@ -22,7 +22,7 @@ const RegistrationPage: NextPage = (): JSX.Element => {
     const onSubmit = (data: FieldValues) => {
         const dataSend: TRegistrationDto = data as TRegistrationDto;
         registerUser(dataSend);
-        push('/');
+        if(error === null) push('/user');
     }
     
     return (
