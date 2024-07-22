@@ -1,21 +1,31 @@
 'use client'
 import { NextPage } from "next";
-import { FormEvent, memo } from "react";
+import { memo, useEffect, useState } from "react";
 import Form from "@/ui/form/form";
 import Input from "@/ui/form/input/input";
 import { useAppSelector } from "@/store/store";
 import FileInput from "@/ui/form/file-input/file-input";
 import Button from "@/ui/form/button/button";
 import { FieldValues, useForm } from "react-hook-form";
+import { useDate } from "@/hooks/useDate";
 
 const UserPage: NextPage = (): JSX.Element => {
   const { user } = useAppSelector(state => state.user);
   const defaultAvatar = "https://static-00.iconduck.com/assets.00/user-avatar-icon-2048x2048-wpp8os2d.png";
   const { register, handleSubmit } = useForm();
+  const [createdAt, setCreatedAt] = useState("");
+  const [updatedAt, setUpdatedAt] = useState("");
   const onSubmit = (data: FieldValues) => {
     console.log(data);
+    const wantSave = confirm("Хочете зберегти данні?");
+    if(!wantSave) return;
     
   };
+  useEffect(() => {
+    setCreatedAt(useDate(user?.createdAt || new Date()));
+    setUpdatedAt(useDate(user?.updatedAt || new Date()));
+    
+  }, [user])
   return (
     <section>
         <div>
@@ -58,7 +68,10 @@ const UserPage: NextPage = (): JSX.Element => {
                 type="text" 
                 value={user?.middleName}
                 {...register('middlName', {required: false})}
+
               />
+              <p>Створено: <time>{createdAt!}</time></p>
+              <p>Оновлено: <time>{updatedAt!}</time></p>
               <Button style={{maxWidth: '335rem', display: 'block'}} type="submit">Зберегти</Button>
           </Form>
         </div>
