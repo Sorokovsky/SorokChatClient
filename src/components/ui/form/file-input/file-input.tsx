@@ -4,18 +4,19 @@ import { IFileInput } from "./file-input.interface";
 
 const FileInput: FC<IFileInput> = forwardRef<HTMLInputElement, IFileInput>(
     ({id, image, size, ...rest}, ref): JSX.Element => {
-        const [src, setSrc ] = useState(image);
+        const [src, setSrc ] = useState(image || "");
         return (
             <label htmlFor={id}>
-                <Image src={src || ""} width={size} height={size} priority alt="" />
+                <Image src={src} width={size} height={size} priority alt="" />
                 <input 
                     type={'file'} 
                     ref={ref}
                     onChange={(ev) => {
+                        console.log(ev.target.value);
                         setSrc(ev.target.value);
                     }}
-                    value={src}
                     {...rest}
+                    value={src}
                 />
             </label>
         );
