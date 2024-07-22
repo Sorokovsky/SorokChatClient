@@ -17,7 +17,7 @@ const UserPage: NextPage = (): JSX.Element => {
           <Form 
             onSubmit={onSubmit}
             title="Користувач">
-              <FileInput size={200} image={user?.avatarPath || defaultAvatar} />
+              <FileInput size={282} image={user?.avatarPath || defaultAvatar} />
               <Input
                 id="email"
                 placeholder="Email"
