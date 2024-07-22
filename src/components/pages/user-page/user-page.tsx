@@ -27,7 +27,7 @@ const UserPage: NextPage = (): JSX.Element => {
         delete update[key];
       }
     });
-    if (update.avatar?.length === 0) delete update.avatar;    
+    if (update.avatar?.length === 0) delete update.avatar;        
     const wantSave = confirm("Хочете зберегти данні?");
     if(!wantSave) return;
     updateUser(update);

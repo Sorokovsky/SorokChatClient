@@ -7,7 +7,7 @@ import { getInstanse } from "../instance";
 export const updateUserApi = async (updateDto: TUpdateUser) => {
     try {
         const instance = getInstanse();
-        const response = await instance.put<TUser, AxiosResponse<TUser, TUpdateUser>, TUpdateUser>(
+        const response = await instance.putForm<TUser, AxiosResponse<TUser, TUpdateUser>, TUpdateUser>(
             Endpoint.USERS, updateDto
         );
         return response.data;
