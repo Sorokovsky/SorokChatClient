@@ -9,13 +9,15 @@ import Button from "@/ui/form/button/button";
 import { FieldValues, useForm } from "react-hook-form";
 import { useDate } from "@/hooks/useDate";
 import { TUpdateUser } from "@/types/update-user.type";
+import { useActions } from "@/hooks/useActions";
 
 const UserPage: NextPage = (): JSX.Element => {
-  const { user } = useAppSelector(state => state.user);
+  const { user, isLoading } = useAppSelector(state => state.user);
   const defaultAvatar = "https://static-00.iconduck.com/assets.00/user-avatar-icon-2048x2048-wpp8os2d.png";
   const { register, handleSubmit } = useForm();
   const [createdAt, setCreatedAt] = useState("");
   const [updatedAt, setUpdatedAt] = useState("");
+  const { updateUser } = useActions();
   const onSubmit = (data: FieldValues) => {
     let keys: (keyof TUpdateUser)[] = Object.keys(data) as (keyof TUpdateUser)[];
     let update: TUpdateUser = {};
@@ -28,7 +30,7 @@ const UserPage: NextPage = (): JSX.Element => {
     if (update.avatar?.length === 0) delete update.avatar;    
     const wantSave = confirm("Хочете зберегти данні?");
     if(!wantSave) return;
-    
+    updateUser(update);
   };
   useEffect(() => {
     setCreatedAt(useDate(user?.createdAt || new Date()));
@@ -72,16 +74,16 @@ const UserPage: NextPage = (): JSX.Element => {
                 {...register('name', {required: false})}
               />
               <Input
-                id="middlName"
+                id="middleName"
                 placeholder="По батькові"
                 type="text" 
                 defaultValue={user?.middleName}
-                {...register('middlName', {required: false})}
+                {...register('middleName', {required: false})}
 
               />
               <p>Створено: <time>{createdAt!}</time></p>
               <p>Оновлено: <time>{updatedAt!}</time></p>
-              <Button style={{maxWidth: '335rem', display: 'block'}} type="submit">Зберегти</Button>
+              <Button disabled={isLoading} style={{maxWidth: '335rem', display: 'block'}} type="submit">Зберегти</Button>
           </Form>
         </div>
     </ section>

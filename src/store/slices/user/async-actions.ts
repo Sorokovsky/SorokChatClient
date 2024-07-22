@@ -2,8 +2,10 @@ import { getProfileApi } from "@/api/users/get-profile";
 import { loginUserApi } from "@/api/users/login";
 import { logoutApi } from "@/api/users/logout";
 import { registerUserApi } from "@/api/users/register";
+import { updateUserApi } from "@/api/users/update";
 import { TLoginDto } from "@/types/login.type";
 import { TRegistrationDto } from "@/types/registration.type";
+import { TUpdateUser } from "@/types/update-user.type";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const getUserProfile = createAsyncThunk(
@@ -32,4 +34,11 @@ export const logoutUser = createAsyncThunk(
     async () => {
         return await logoutApi();
     }
-)
+);
+
+export const updateUser = createAsyncThunk(
+    'user/update',
+    async (updateDto: TUpdateUser) => {
+        return await updateUserApi(updateDto);
+    }
+);
