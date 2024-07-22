@@ -6,23 +6,21 @@ import styles from "./file-input.module.sass";
 
 const FileInput: FC<IFileInput> = forwardRef<HTMLInputElement, IFileInput>(
     ({id, image, size, ...rest}, ref): JSX.Element => {
-        const [src, setSrc ] = useState(image || "");
+        const [file, setFile ] = useState<File | undefined>(undefined);
         return (
             <label htmlFor={id} className={cn(styles.label)}>
-                <Image src={src} width={size} height={size} priority alt="" />
+                <Image src={file ? URL.createObjectURL(file) : image} width={size} height={size} priority alt="" />
                 <input 
                     type={'file'} 
                     ref={ref}
                     className={cn(styles.input)}
                     onChange={(ev) => {
-                        const reader = new FileReader();
-                        reader.onload = () => {
-                            setSrc(reader.result?.toString() || image);
-                        };
-                        reader.readAsDataURL(ev.target.files![0])
+                        const target = ev.target || window.event?.srcElement;
+                        const file = target.files![0];
+                        setFile(file);
+                        
                     }}
                     {...rest}
-                    value={src}
                 />
             </label>
         );
