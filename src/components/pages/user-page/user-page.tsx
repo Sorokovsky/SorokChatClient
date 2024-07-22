@@ -16,6 +16,10 @@ const UserPage: NextPage = (): JSX.Element => {
   const [createdAt, setCreatedAt] = useState("");
   const [updatedAt, setUpdatedAt] = useState("");
   const onSubmit = (data: FieldValues) => {
+    let keys = Object.keys(data);
+    keys = keys.filter(key => data[key]);
+    console.log(keys);
+    data = {...keys.map(key => [key] = data[key])};
     console.log(data);
     const wantSave = confirm("Хочете зберегти данні?");
     if(!wantSave) return;
@@ -41,7 +45,7 @@ const UserPage: NextPage = (): JSX.Element => {
                 id="email"
                 placeholder="Email"
                 type="email" 
-                value={user?.email}
+                defaultValue={user?.email}
                 {...register('email', {
                   required: false
                 })}
@@ -50,7 +54,7 @@ const UserPage: NextPage = (): JSX.Element => {
                 id="surname"
                 placeholder="Прізвище"
                 type="text" 
-                value={user?.surname}
+                defaultValue={user?.surname}
                 {...register('surname', {
                   required: false
                 })}
@@ -59,14 +63,14 @@ const UserPage: NextPage = (): JSX.Element => {
                 id="name"
                 placeholder="Ім'я"
                 type="text" 
-                value={user?.name}
+                defaultValue={user?.name}
                 {...register('name', {required: false})}
               />
               <Input
                 id="middlName"
                 placeholder="По батькові"
                 type="text" 
-                value={user?.middleName}
+                defaultValue={user?.middleName}
                 {...register('middlName', {required: false})}
 
               />
