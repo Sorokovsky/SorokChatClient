@@ -10,6 +10,7 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useDate } from "@/hooks/useDate";
 import { TUpdateUser } from "@/types/update-user.type";
 import { useActions } from "@/hooks/useActions";
+import { useAvatar } from "@/hooks/useAvatar";
 
 const UserPage: NextPage = (): JSX.Element => {
   const { user, isLoading } = useAppSelector(state => state.user);
@@ -45,7 +46,7 @@ const UserPage: NextPage = (): JSX.Element => {
             title="Користувач">
               <FileInput 
                 size={282} 
-                image={user?.avatarPath || defaultAvatar} 
+                image={useAvatar(user?.avatarPath) || defaultAvatar} 
                 {...register('avatar', {required: false})}
               />
               <Input

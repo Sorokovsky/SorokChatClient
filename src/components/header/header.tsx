@@ -9,6 +9,7 @@ import Avatar from "@/ui/avatar/avatar";
 import { useAppSelector } from "@/store/store";
 import cn from "classnames";
 import { useActions } from "@/hooks/useActions";
+import { useAvatar } from "@/hooks/useAvatar";
 
 const Header: FC<IHeader> = ({className}): JSX.Element => {
     const [avatarPath, setAvatarPath ] = useState<string | undefined>(undefined);
@@ -25,7 +26,7 @@ const Header: FC<IHeader> = ({className}): JSX.Element => {
     useEffect(() => {
         if(user === null) setAvatarPath(undefined);
         else if(user?.avatarPath?.trim() === '') setAvatarPath(undefined);
-        else setAvatarPath(user.avatarPath);
+        else setAvatarPath(useAvatar(user?.avatarPath));
     }, [user]);
     return (
         <header
