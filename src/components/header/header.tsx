@@ -24,7 +24,7 @@ const Header: FC<IHeader> = ({className}): JSX.Element => {
     );
     useEffect(() => {
         if(user === null) setAvatarPath(undefined);
-        else if(user.avatarPath.trim() === '') setAvatarPath(undefined);
+        else if(user?.avatarPath?.trim() === '') setAvatarPath(undefined);
         else setAvatarPath(user.avatarPath);
     }, [user]);
     return (

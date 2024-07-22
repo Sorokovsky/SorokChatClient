@@ -10,6 +10,7 @@ import cn from "classnames";
 import { useActions } from "@/hooks/useActions";
 import { userSettings } from "@/constants/user-settings/user-settings";
 import SettingsList from "@/components/settings-list/settings-list";
+import Error from "@/components/error/error";
 
 const MainLayout: FC<ILayout> = ({children}): JSX.Element => {
     const { isShow } = useAppSelector(state => state.settings);
@@ -28,6 +29,7 @@ const MainLayout: FC<ILayout> = ({children}): JSX.Element => {
                 <SettingsList settings={userSettings} />
                 </Sidebar>
             </main>
+            <Error />
         </body>
     </html>
   );

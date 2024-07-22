@@ -17,7 +17,11 @@ const initialState: IUser = {
 const userSlice = createSlice({
     name: "user",
     initialState,
-    reducers: {},
+    reducers: {
+        clearError(state) {
+            state.error = null;
+        }
+    },
     extraReducers: buider => {
         buider.addCase(getUserProfile.fulfilled, (state, action: PayloadAction<TUser>) => {
             state.user = action.payload;
