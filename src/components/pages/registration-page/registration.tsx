@@ -9,7 +9,7 @@ import { TRegistrationDto } from "@/types/registration.type";
 import { useActions } from "@/hooks/useActions";
 import { useAppSelector } from "@/store/store";
 import { useRouter } from "next/navigation";
-import { registrationsFields } from "@/constants/user-settings/forms/registration";
+import { registrationsFields } from "@/constants/forms/registration";
 
 const RegistrationPage: NextPage = (): JSX.Element => {
     const { registerUser } = useActions();

@@ -1,4 +1,4 @@
-import { IField } from "@/constants/user-settings/forms/form.interface";
+import { IField } from "@/constants/forms/form.interface";
 import { ReactNode } from "react";
 import { FieldValues } from "react-hook-form";
 

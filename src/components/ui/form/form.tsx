@@ -33,6 +33,7 @@ const Form: FC<IForm> = ({
                             Icon={Icon}
                             placeholder={placeholder}
                             defaultValue={defaultValue}
+                            key={slug}
                             {...register(slug, registerOption)}
                         />
                     );

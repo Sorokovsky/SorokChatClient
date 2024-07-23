@@ -13,12 +13,12 @@ import { TLoginDto } from "@/types/login.type";
 import { useActions } from "@/hooks/useActions";
 import { useAppSelector } from "@/store/store";
 import { useRouter } from "next/navigation";
+import { registrationsFields } from "@/constants/forms/registration";
 
 const LoginPage: NextPage = (): JSX.Element => {
-    const { register, handleSubmit } = useForm();
     const { loginUser } = useActions();
     const { push } = useRouter();
-    const { isLoading, error } = useAppSelector(state => state.user);
+    const { isLoading } = useAppSelector(state => state.user);
     const onSubmit = (data: FieldValues) => {
         const loginDto: TLoginDto = data as TLoginDto;
         loginUser(loginDto);
@@ -27,22 +27,13 @@ const LoginPage: NextPage = (): JSX.Element => {
     return (
         <section className={cn(styles.page)}>
             <div>
-                <Form onSubmit={handleSubmit(onSubmit)} title="Авторизація" >
-                    <Input 
-                    id="email" 
-                    type="email" 
-                    placeholder="Email" 
-                    Icon={MdOutlineMail}
-                    {...register('email', {required: true})}
-                     />
-                    <Input 
-                    id="password" type='password' 
-                    placeholder="Пароль" 
-                    Icon={RiLockPasswordLine} 
-                    {...register('password', {required: true})}
-                    />
-                    <Button disabled={isLoading} type="submit">Авторизуватися</Button>
-                </Form>
+                <Form 
+                    onSubmit={onSubmit} 
+                    title="Авторизація" 
+                    isLoading={isLoading}
+                    fields={registrationsFields}
+                    submitText="Авторизуватися"
+                />
             </div>
         </ section>
     );
