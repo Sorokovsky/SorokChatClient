@@ -24,16 +24,18 @@ const Form: FC<IForm> = ({
             onSubmit={handleSubmit(onSubmit)}
             className={cn(styles.form, className)}
             >
-                {fields.map(({placeholder, slug, type, Icon, defaultValue, registerOption}) => {
-    
+                {fields.map(({placeholder, slug, type, Icon, defaultValue, registerOption, image, size}) => {
+                    const Field = type === 'file' ? FileInput : Input;
                     return (
-                        <Input
+                        <Field
                             id={slug}
                             type={type}
                             Icon={Icon}
-                            placeholder={placeholder}
-                            defaultValue={defaultValue}
+                            placeholder={`${placeholder}`}
+                            defaultValue={`${defaultValue}`}
                             key={slug}
+                            image={image}
+                            size={282}
                             {...register(slug, registerOption)}
                         />
                     );

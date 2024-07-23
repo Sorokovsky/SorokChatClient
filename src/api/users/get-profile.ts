@@ -1,5 +1,4 @@
 import { TUser } from "@/types/user.type";
-import { HttpStatusCode } from "axios";
 import { Endpoint } from "../endpoints.const";
 import { getInstanse } from "../instance";
 
