@@ -26,7 +26,7 @@ const MainLayout: FC<ILayout> = ({children}): JSX.Element => {
             <main className={cn(styles.main)}>
                 {children}
                 <Sidebar close={hide} isOpen={isShow} >
-                <SettingsList settings={userSettings} />
+                    <SettingsList settings={userSettings} />
                 </Sidebar>
             </main>
             <Error />
