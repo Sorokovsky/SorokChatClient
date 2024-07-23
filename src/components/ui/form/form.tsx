@@ -35,7 +35,7 @@ const Form: FC<IForm> = ({
                             defaultValue={`${defaultValue}`}
                             key={slug}
                             image={image}
-                            size={282}
+                            size={size || 282}
                             {...register(slug, registerOption)}
                         />
                     );
