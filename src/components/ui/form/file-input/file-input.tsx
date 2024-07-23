@@ -9,7 +9,7 @@ const FileInput: FC<IFileInput> = forwardRef<HTMLInputElement, IFileInput>(
         const [file, setFile ] = useState<File | undefined>(undefined);
         return (
             <label htmlFor={id} className={cn(styles.label)}>
-                <Image src={file ? URL.createObjectURL(file) : image} width={size} height={size} priority alt="" />
+                <Image className={cn(styles.image)}  src={file ? URL.createObjectURL(file) : image} width={size} height={size} priority alt="" />
                 <input 
                     type={'file'} 
                     ref={ref}

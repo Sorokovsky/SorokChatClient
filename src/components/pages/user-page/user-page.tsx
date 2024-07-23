@@ -41,8 +41,9 @@ const UserPage: NextPage = (): JSX.Element => {
   return (
     <section>
         <div>
-          <Form 
+          {/* <Form 
             onSubmit={handleSubmit(onSubmit)}
+            fields={}
             title="Користувач">
               <FileInput 
                 size={282} 
@@ -85,7 +86,7 @@ const UserPage: NextPage = (): JSX.Element => {
               <p>Створено: <time>{createdAt!}</time></p>
               <p>Оновлено: <time>{updatedAt!}</time></p>
               <Button disabled={isLoading} style={{maxWidth: '335rem', display: 'block'}} type="submit">Зберегти</Button>
-          </Form>
+          </Form> */}
         </div>
     </ section>
   );  
