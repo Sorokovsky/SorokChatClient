@@ -3,15 +3,19 @@ import { NextPage } from "next";
 import styles from './index.module.sass';
 import Search from "@/ui/search/search"
 import cn from "classnames";
-import { ChangeEvent, useCallback, useEffect } from "react";
+import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import { useAppSelector } from "@/store/store"
 import { useRouter } from "next/navigation";
+import Chat from "@/components/chat/chat";
+import Sidebar from "@/components/sidebar/sidebar";
 
 const HomePage: NextPage = (): JSX.Element => {
     const searchHandler = useCallback((ev: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         }, 
         []
     );
+
+    const [isSearch, setIsSearch] = useState(false);
 
     const { user } = useAppSelector(state => state.user);
     const { push } = useRouter();
@@ -25,15 +29,7 @@ const HomePage: NextPage = (): JSX.Element => {
         <>
             <section className={cn(styles.page)}>
                 <div className={cn(styles.container)}>
-                    <div className={cn(styles.left)}>
-                        <Search 
-                        searchHandler={searchHandler}
-                        placeholder={"Search"} 
-                        />
-                    </div>
-                    <div className={cn(styles.right)}>
-                        <div>Hello Page</div>
-                    </div>
+                    <Chat></Chat>
                 </div>
             </section>
         </>
