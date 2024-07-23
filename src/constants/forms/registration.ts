@@ -8,6 +8,7 @@ export const registrationsFields: IField[] = [
         placeholder: "Email",
         type: "email",
         Icon: MdOutlineMail,
+        defaultValue: "",
         registerOption: {
             required: true,
         },
@@ -15,6 +16,7 @@ export const registrationsFields: IField[] = [
     {
         slug: "password",
         placeholder: "Пароль",
+        defaultValue: "",
         type: "password",
         Icon: RiLockPasswordLine,
         registerOption: {
