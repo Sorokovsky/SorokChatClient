@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
-import { SERVER_URL } from './src/constants/api.constant';
+import { API, SERVER_URL } from './src/constants/api.constant';
 
 const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/api/:path*",
+        source: `/${API}/:path*`,
         headers: [
           { key: "Access-Control-Allow-Origin", value: "*" }, // Дозволяє всі джерела
           {
@@ -24,8 +24,8 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/api/:path*",
-        destination: SERVER_URL + "/:path*",
+        source: `${API}/:path*`,
+        destination: `${SERVER_URL}/:path*`,
       }
     ];
   }
