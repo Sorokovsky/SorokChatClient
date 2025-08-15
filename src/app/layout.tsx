@@ -1,6 +1,7 @@
-import { Header } from "@/common/header/header";
+import { Layout } from "@/components/common/layout/layout";
+import type { ILayout } from "@/components/common/layout/layout.props";
 import type { Metadata } from "next";
-import type { FC, PropsWithChildren } from "react";
+import type { FC } from "react";
 import "./globals.sass";
 
 export const metadata: Metadata = {
@@ -8,14 +9,11 @@ export const metadata: Metadata = {
   description: "Український месенджер SorokChat",
 };
 
-const RootLayout: FC<PropsWithChildren> = ({ children }) => {
+const RootLayout: FC<ILayout> = ({ children }) => {
   return (
-    <html lang="en">
-      <body>
-        <Header />
-        {children}
-      </body>
-    </html>
+    <Layout>
+      {children}
+    </Layout>
   );
 }
 
