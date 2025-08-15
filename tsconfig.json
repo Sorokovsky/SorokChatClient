@@ -22,7 +22,8 @@
       "@/*": ["./src/*"],
       "@/pages/*": ["./src/components/pages/*"],
       "@/common/*": ["./src/components/common/*"],
-      "@/constants/*": ["./src/constants/*"]
+      "@/constants/*": ["./src/constants/*"],
+      "@/ui/*": ["./src/components/ui/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
