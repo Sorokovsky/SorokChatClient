@@ -7,8 +7,8 @@ import type { ILogo } from "./logo.props";
 
 export const Logo: FC<ILogo> = ({href = "/", image = DEFAULT_LOGO, size = LOGO_SIZE}) => {
     return (
-        <Link href={href} className={cn("circle")}>
-            <Image src={image} alt={"Лого"} width={size} height={size} />
+        <Link href={href} className={cn("circle")} style={{ width: size, height: size }}>
+            <Image src={image} alt={"Лого"} width={size} height={size} priority={true} />
         </Link>
     );
 };
