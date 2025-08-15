@@ -4,7 +4,7 @@ import { requestHandler } from "./handlers/request-handler";
 import { responseHandler } from './handlers/response-handler';
 
 const instance = new Axios({
-    baseURL: SERVER_URL,
+    baseURL: "/api",
     withCredentials: false
 });
 instance.interceptors.request.use(requestHandler);
