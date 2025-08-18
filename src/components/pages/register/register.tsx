@@ -5,13 +5,19 @@ import { useRegister } from "@/hooks/register.hook";
 import type { NextPage } from "next";
 import styles from "./register.module.sass";
 import cn from "clsx";
+import { useCallback } from "react";
+import { FieldValues } from "react-hook-form";
 
 export const RegisterPage: NextPage = () => {
     const { mutate: register } = useRegister();
+    const onSubmit = useCallback((fields: unknown) => {
+        console.log(fields);
+        
+    }, []);
     return (
         <>
             <div className={cn(styles.center)}>
-                <Form fields={REGISTER_FIELDS} onSubmit={() => {}} />
+                <Form fields={REGISTER_FIELDS} onSubmit={onSubmit} />
             </div>
         </>
     );

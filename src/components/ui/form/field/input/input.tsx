@@ -8,6 +8,6 @@ import styles from "./input.module.sass";
 export const Input: FC<IInput> = ({name, options}) => {
     const { register } = useForm();
     return (
-        <input className={cn(styles.input)} id={name} {...register(name, options)} />
+        <input className={cn(styles.input)} id={name} {...register(name, options)} autoComplete="off" />
     );
 };
