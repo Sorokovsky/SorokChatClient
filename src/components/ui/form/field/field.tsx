@@ -4,11 +4,11 @@ import { Input } from './input/input';
 import cn from "clsx";
 import styles from "./field.module.sass";
 
-export const Field: FC<IField> = ({ input, label }) => {
+export const Field: FC<IField> = ({ input, label, register }) => {
     return (
         <fieldset className={cn(styles.field)}>
             <label htmlFor={input.name}>{label}{input.options.required ? <span>*</span> : undefined}</label>
-            <Input type={input.type} name={input.name} options={input.options} />
+            <Input type={input.type} name={input.name} options={input.options} register={register} />
         </fieldset>
     );
 };

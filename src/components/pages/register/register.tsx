@@ -6,13 +6,13 @@ import type { NextPage } from "next";
 import styles from "./register.module.sass";
 import cn from "clsx";
 import { useCallback } from "react";
-import { FieldValues } from "react-hook-form";
+import type { CreateUserPayload } from "@/contracts/user/create-user.contract";
 
 export const RegisterPage: NextPage = () => {
     const { mutate: register } = useRegister();
     const onSubmit = useCallback((fields: unknown) => {
-        console.log(fields);
-        
+        const createdUser = fields as CreateUserPayload;
+        register(createdUser);
     }, []);
     return (
         <>
